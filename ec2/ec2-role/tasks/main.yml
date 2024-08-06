@@ -1,0 +1,16 @@
+---
+# tasks file for ec2-role
+- name: start an instance with a public IP address
+  amazon.aws.ec2_instance:
+    name: "ansible-test-inst"
+    #key_name: "prod-ssh-key"
+    #vpc_subnet_id: subnet-5ca1ab1e
+    instance_type: "{{ type }}"
+    security_group: default
+    region: us-east-1
+    aws_access_key: '{{aws_access_key}}' # from vault
+    aws_secret_key: '{{aws_secret_key}}' # from vault
+    network:
+    image_id: ami-04b70fa74e45c3917
+    tags:
+      Environment: Testing

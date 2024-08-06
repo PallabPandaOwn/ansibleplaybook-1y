@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+  - role: ec2-role
+    message: 'creating ec2 instance'
