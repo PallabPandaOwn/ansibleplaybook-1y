@@ -1,9 +1,9 @@
 ---
 # tasks file for ec2-role
-- name: start an instance with a public IP address
+- name: Creating EC2 Instance
   amazon.aws.ec2_instance:
-    name: "ansible-test-inst"
-    #key_name: "prod-ssh-key"
+    name: "{{ item.name }}"
+    key_name: "pallab-aws-keypair"
     #vpc_subnet_id: subnet-5ca1ab1e
     instance_type: "{{ type }}"
     security_group: default
@@ -11,6 +11,11 @@
     aws_access_key: '{{aws_access_key}}' # from vault
     aws_secret_key: '{{aws_secret_key}}' # from vault
     network:
-    image_id: ami-04b70fa74e45c3917
+      assign_public_ip: true
+    image_id: "{{ item.image }}"
     tags:
-      Environment: Testing
+      Environment: "{{ item.name }}"
+  loop: 
+  - {image: "ami-04a81a99f5ec58529" , name: "instance-1"}
+  - {image: "ami-04a81a99f5ec58529" , name: "instance-2"}
+  - {image: "ami-0ba9883b710b05ac6" , name: "instance-3"}
