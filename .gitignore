@@ -161,7 +161,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-./ec2/vault.pass
-./ec2/group_vars/all/pass.yml
-
 # END
+ec2/vault.pass
+ec2/group_vars/all/pass.yml
