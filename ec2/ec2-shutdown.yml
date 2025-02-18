@@ -6,6 +6,6 @@
     ansible.builtin.debug:
       var: ansible_fatcs
   - name: shutdiwn ubuntu ec2 instance
-    ansible.builtin.command: /sbin/shutdowm -t now
+    ansible.builtin.command: /sbin/shutdown -t now
     when:
       ansible_fatcs['os_family'] == 'Debian'
